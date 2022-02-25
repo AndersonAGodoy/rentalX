@@ -52,6 +52,10 @@ class CarsRepositoryInMemory implements ICarsRepository {
 	async findById(id: string): Promise<Car> {
 		return this.cars.find((car) => car.id === id);
 	}
+
+	deleteCar(id: string): Promise<void> {
+		throw new Error('Method not implemented.');
+	}
 }
 
 export { CarsRepositoryInMemory };

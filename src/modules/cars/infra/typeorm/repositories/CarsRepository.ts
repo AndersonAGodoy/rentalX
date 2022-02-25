@@ -1,5 +1,6 @@
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO';
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
+import { AppError } from '@shared/errors/AppError';
 import { getRepository, Repository } from 'typeorm';
 import { Car } from '../entities/Car';
 
@@ -66,6 +67,10 @@ class CarsRepository implements ICarsRepository {
 	async findById(id: string): Promise<Car> {
 		const car = await this.repository.findOne(id);
 		return car;
+	}
+
+	async deleteCar(id: string): Promise<void> {
+		await this.repository.delete(id);
 	}
 }
 
